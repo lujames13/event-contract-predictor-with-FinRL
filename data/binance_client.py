@@ -22,6 +22,9 @@ from utils.logger import get_logger
 from utils.time_utils import get_timestamp_ms, get_datetime_from_ms, get_binance_interval
 from config.config_manager import ConfigManager
 
+from dotenv import load_dotenv
+load_dotenv()
+
 # Setup logger
 logger = get_logger(__name__)
 

@@ -19,6 +19,8 @@ from data.feature_engineering import FeatureGenerator, TechnicalIndicators
 from data.market_analyzer import MarketAnalyzer
 from environments.binary_prediction_env import create_binary_prediction_env
 from environments.env_wrapper import create_sb3_env
+from dotenv import load_dotenv
+load_dotenv()
 
 # Setup logger
 logger = get_logger("main")
