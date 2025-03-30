@@ -50,17 +50,17 @@
 ```
 event-contract-predictor-with-FinRL/
 │
-├── config/                     # 配置管理
-│   ├── __init__.py
-│   ├── config_manager.py       # 配置加載和管理
-│   └── default_config.yaml     # 預設配置
+├── config/                     # 配置管理 # (phase1已完成)
+│   ├── __init__.py             # (phase1已完成)
+│   ├── config_manager.py       # 配置加載和管理 # (phase1已完成)
+│   └── default_config.yaml     # 預設配置 # (phase1已完成)
 │
-├── data/                       # 數據獲取和處理
-│   ├── __init__.py
-│   ├── binance_client.py       # Binance API 封裝
-│   ├── data_manager.py         # 數據管理和緩存
-│   ├── feature_engineering.py  # 特徵工程
-│   └── market_analyzer.py      # 市場狀態分析
+├── data/                       # 數據獲取和處理 # (phase1已完成)
+│   ├── __init__.py             # (phase1已完成)
+│   ├── binance_client.py       # Binance API 封裝 # (phase1已完成)
+│   ├── data_manager.py         # 數據管理和緩存 # (phase1已完成)
+│   ├── feature_engineering.py  # 特徵工程 # (phase1已完成)
+│   └── market_analyzer.py      # 市場狀態分析 # (phase1已完成)
 │
 ├── models/                     # 預測模型
 │   ├── __init__.py
@@ -78,10 +78,10 @@ event-contract-predictor-with-FinRL/
 │   ├── model_manager.py        # 模型管理與選擇
 │   └── ensemble.py             # 模型集成方法
 │
-├── environments/               # RL環境
-│   ├── __init__.py
-│   ├── binary_prediction_env.py  # 二元預測環境
-│   └── env_wrapper.py          # 環境適配器
+├── environments/               # RL環境 # (phase1已完成)
+│   ├── __init__.py             # (phase1已完成)
+│   ├── binary_prediction_env.py  # 二元預測環境 # (phase1已完成)
+│   └── env_wrapper.py          # 環境適配器 # (phase1已完成)
 │
 ├── prediction/                 # 預測核心
 │   ├── __init__.py
@@ -108,11 +108,11 @@ event-contract-predictor-with-FinRL/
 │   ├── notification_service.py # 通知服務
 │   └── chart_generator.py      # 圖表生成器
 │
-├── utils/                      # 工具函數
-│   ├── __init__.py
-│   ├── logger.py               # 日誌系統
-│   ├── time_utils.py           # 時間處理工具
-│   └── file_utils.py           # 文件處理工具
+├── utils/                      # 工具函數 # (phase1已完成)
+│   ├── __init__.py             # (phase1已完成)
+│   ├── logger.py               # 日誌系統 # (phase1已完成)
+│   ├── time_utils.py           # 時間處理工具 # (phase1已完成)
+│   └── file_utils.py           # 文件處理工具 # (phase1已完成)
 │
 └── main.py                     # 主程序入口
 ```
