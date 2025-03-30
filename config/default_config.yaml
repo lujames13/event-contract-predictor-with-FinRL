@@ -1,0 +1,124 @@
+# Default Configuration File for BTC Price Prediction System
+
+# Data Configuration
+data:
+  # Trading pairs to monitor
+  symbols:
+    - "BTCUSDT"
+  
+  # Timeframes to fetch and analyze
+  timeframes:
+    - "1m"
+    - "5m"
+    - "15m"
+    - "30m"
+    - "1h"
+    - "4h"
+    - "1d"
+  
+  # Days to look back for historical data
+  lookback_days:
+    "1m": 3      # 3 days for 1-minute data
+    "5m": 7      # 7 days for 5-minute data
+    "15m": 14    # 14 days for 15-minute data
+    "30m": 30    # 30 days for 30-minute data
+    "1h": 60     # 60 days for 1-hour data
+    "4h": 120    # 120 days for 4-hour data
+    "1d": 365    # 365 days for 1-day data
+  
+  # Cache settings
+  cache_dir: "cache"
+  use_cache: true
+  cache_expiry_hours: 24
+  
+  # API request settings
+  max_retries: 3
+  retry_delay_seconds: 1
+  request_timeout_seconds: 10
+
+# Model Configuration
+model:
+  # Base directory for model storage
+  model_dir: "models"
+  
+  # Algorithm selection (Options: PPO, A2C, DQN, XGBoost, LSTM)
+  algorithm: "PPO"
+  
+  # Training parameters
+  batch_size: 64
+  learning_rate: 0.0003  # 3e-4
+  gamma: 0.99  # Discount factor
+  n_steps: 2048
+  ent_coef: 0.01  # Entropy coefficient
+  
+  # Model architecture
+  hidden_sizes:
+    - 64
+    - 64
+  activation: "relu"
+  
+  # Training control
+  max_train_steps: 50000
+  eval_freq: 10000
+  save_freq: 10000
+  log_freq: 1000
+  
+  # Device settings (Options: cpu, cuda)
+  device: "cpu"
+
+# Trading Configuration
+trading:
+  # Prediction timeframes
+  prediction_timeframes:
+    - "10m"
+    - "30m"
+    - "1h"
+    - "1d"
+  
+  # Source timeframes for each prediction timeframe
+  source_timeframes:
+    "10m":
+      - "1m"
+      - "3m"
+      - "5m"
+    "30m":
+      - "5m"
+      - "15m"
+      - "30m"
+    "1h":
+      - "15m"
+      - "30m"
+      - "1h"
+    "1d":
+      - "1h"
+      - "4h"
+      - "1d"
+  
+  # Confidence thresholds
+  min_confidence: 0.6
+  high_confidence: 0.8
+  
+  # Trading parameters
+  initial_amount: 10000  # Initial capital
+  max_position_size: 0.2  # Maximum position size as fraction of capital
+  transaction_fee: 0.001  # 0.1% fee
+
+# Discord Bot Configuration
+discord:
+  # Discord bot token (IMPORTANT: Do not commit actual token to version control)
+  token: ""  # Set via environment variable DISCORD_BOT_TOKEN
+  
+  # Discord channels
+  channels:
+    predictions: ""
+    performance: ""
+    admin: ""
+  
+  # Notification settings
+  notify_on_prediction: true
+  notify_on_high_confidence: true
+  notification_cooldown_minutes: 60
+  
+  # Command settings
+  command_prefix: "/"
+  admin_user_ids: []  # List of admin user IDs
