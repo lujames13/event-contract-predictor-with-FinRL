@@ -172,3 +172,23 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
+
+# Project specific directories
+cache/
+logs/
+tensorboard_log/
+trained_models/
+
+# Sensitive information
+.env
+
+# Specific file types that should be ignored
+*.parquet
+events.out.tfevents.*
+
+# Keep directory structure without contents
+# If you want to keep empty directories, add these:
+!cache/.gitkeep
+!logs/.gitkeep
+!tensorboard_log/.gitkeep
+!trained_models/.gitkeep
