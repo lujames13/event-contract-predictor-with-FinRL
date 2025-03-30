@@ -1,0 +1,82 @@
+# BTC Price Prediction System Configuration
+
+# Data settings
+data:
+  cache_dir: "./data/cache"
+  timeframes: ["30m", "1h", "1d"]
+  default_lookback_days: 30
+  use_cache: true
+
+# Binance API settings
+# These can be overridden by environment variables BINANCE_API_KEY and BINANCE_API_SECRET
+binance:
+  api_key: ""
+  api_secret: ""
+  rate_limit_buffer: 0.8  # Buffer to avoid rate limit issues
+
+# Model settings
+model_dir: "./models/saved"
+models:
+  - model_id: "ppo_btcusdt_1h"
+    model_type: "PPOModel"
+    active: true
+  - model_id: "xgboost_btcusdt_1h"
+    model_type: "XGBoostModel"
+    active: true
+
+# Ensemble settings
+ensemble:
+  ensemble_id: "default_ensemble"
+  weights:
+    ppo_btcusdt_1h: 0.6
+    xgboost_btcusdt_1h: 0.4
+
+# Prediction settings
+prediction:
+  confidence_threshold: 0.6
+  max_prediction_history: 1000
+  prediction_history_file: "./data/prediction_history.json"
+
+# Backtest settings
+backtest:
+  results_dir: "./backtest_results"
+  save_detailed_results: true
+
+# Logging settings
+logging:
+  log_file: "./logs/app.log"
+  log_level: "INFO"
+  rotation: true
+  max_size_mb: 10
+  backup_count: 5
+
+# Feature engineering settings
+features:
+  technical_indicators:
+    - "ma7"
+    - "ma25"
+    - "ma99"
+    - "rsi14"
+    - "bb_upper"
+    - "bb_lower"
+    - "macd"
+    - "macd_signal"
+    - "atr14"
+    - "stoch_k"
+    - "stoch_d"
+    - "adx14"
+    - "obv"
+  use_price_features: true
+  use_volume_features: true
+  normalize_features: true
+
+# Environment settings
+environment:
+  window_size: 10
+  reward_config:
+    correct_prediction: 1.0
+    incorrect_prediction: -1.0
+    scale_by_change: true
+    change_scaling_factor: 10.0
+    consecutive_correct_bonus: 0.1
+    max_consecutive_bonus: 0.5

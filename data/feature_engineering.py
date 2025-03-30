@@ -29,6 +29,49 @@ class TechnicalIndicators:
     """
     
     @staticmethod
+    def add_indicators(df: pd.DataFrame) -> pd.DataFrame:
+        """
+        Add all standard technical indicators to the dataframe.
+        
+        This method acts as a facade to apply multiple technical indicators at once.
+        
+        Args:
+            df (pd.DataFrame): Price dataframe
+            
+        Returns:
+            pd.DataFrame: DataFrame with all standard technical indicators added
+        """
+        logger.info("Adding all standard technical indicators")
+        
+        # Make a copy to avoid modifying the original
+        df = df.copy()
+        
+        # Add moving averages
+        df = TechnicalIndicators.add_ma(df, periods=[7, 25, 99])
+        
+        # Add RSI
+        df = TechnicalIndicators.add_rsi(df)
+        
+        # Add MACD
+        df = TechnicalIndicators.add_macd(df)
+        
+        # Add Bollinger Bands
+        df = TechnicalIndicators.add_bollinger_bands(df)
+        
+        # Add ATR
+        df = TechnicalIndicators.add_atr(df)
+        
+        # Add Stochastic Oscillator
+        df = TechnicalIndicators.add_stochastic(df)
+        
+        # Add OBV
+        df = TechnicalIndicators.add_obv(df)
+        
+        logger.info(f"Added {len(df.columns)} columns with technical indicators")
+        
+        return df
+    
+    @staticmethod
     def add_ma(df: pd.DataFrame, periods: List[int] = [7, 25, 99], 
               column: str = 'close') -> pd.DataFrame:
         """
